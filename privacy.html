@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سياسة الخصوصية — هرجة</title>
+<meta name="description" content="سياسة الخصوصية لتطبيق هرجة (com.harjah.app): لا نجمع بيانات شخصية، ولا حسابات، ولا إعلانات.">
+<meta name="theme-color" content="#0E5E55">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-900:#07403A; --teal:#0E5E55; --mint:#C6EFE6; --cream:#FDF6EE; --sand:#F2E3D5; --amber:#C58A1B;
+  --ink:#231815; --brown:#5A4339; --card:#FFFFFF; --line:#E8D9CB;
+  --display:"Cairo","Tajawal",Tahoma,sans-serif;
+  --body:"Tajawal","Cairo",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--cream:#14100E; --sand:#241B17; --card:#1D1613; --line:#33281F; --ink:#F6EBDD; --brown:#C9B3A2; --mint:#12413B}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);line-height:1.95;font-size:18px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-underline-offset:4px}
+@media(prefers-color-scheme:dark){a{color:#7fd6c7}}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:8px}
+.wrap{width:min(860px,100% - 40px);margin-inline:auto}
+
+.top{background:var(--teal);color:#fff;padding:max(22px,env(safe-area-inset-top)) 0 90px;position:relative;isolation:isolate;overflow:hidden}
+.top::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23F2E3D5' stroke-width='2'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3Ccircle cx='28' cy='28' r='2.5' fill='%23F2E3D5'/%3E%3C/svg%3E")}
+.bar{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-family:var(--display);font-size:26px;font-weight:700}
+.brand img{width:44px;height:44px;border-radius:12px}
+.back{color:#ffffffd9;text-decoration:none;font-size:15px;padding:8px 14px;border-radius:99px;border:1.5px solid #ffffff44}
+.back:hover{background:#ffffff1f}
+.top h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,7vw,64px);line-height:1.2;margin-top:44px}
+.top p{color:#ffffffc4;margin-top:8px;font-weight:400}
+.stripe{height:7px;background:linear-gradient(90deg,#fff 0 33.3%,#D8281F 33.3% 66.6%,#0B7A3E 66.6%)}
+
+main{margin-top:-52px;position:relative;padding-bottom:70px}
+.summary{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:28px 30px;box-shadow:0 18px 40px #2a1a1218}
+.summary h2{font-family:var(--display);font-size:25px;margin-bottom:10px}
+.summary ul{list-style:none;display:grid;gap:8px}
+.summary li{display:flex;gap:12px;align-items:flex-start}
+.summary li::before{content:"";flex:none;width:11px;height:11px;margin-top:11px;border-radius:3px;transform:rotate(45deg);background:var(--amber)}
+.en{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);direction:ltr;text-align:left;color:var(--brown);font-size:15px;line-height:1.7}
+
+article{margin-top:46px}
+article section{padding:22px 0;border-bottom:1px solid var(--line)}
+article section:last-child{border:0}
+h2.t{font-family:var(--display);font-size:27px;font-weight:600;line-height:1.4;margin-bottom:6px}
+article p{color:var(--brown);margin-top:6px}
+article ul{margin:8px 0 0;padding-inline-start:22px;color:var(--brown)}
+article li{margin-top:4px}
+article strong{color:var(--ink);font-weight:600}
+bdi{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px}
+.meta{margin-top:40px;background:var(--sand);border-radius:22px;padding:18px 24px;font-size:15px;color:var(--brown)}
+
+footer{background:var(--teal-900);color:#ffffffb8;padding:26px 0 max(30px,env(safe-area-inset-bottom));font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
+footer a{color:#fff}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="44" height="44">هرجة</a>
+      <a class="back" href="index.html">العودة للتطبيق</a>
+    </div>
+    <h1>سياسة الخصوصية</h1>
+    <p>تطبيق هرجة · آخر تحديث: 25 نوفمبر 2026</p>
+  </div>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+
+<main>
+<div class="wrap">
+  <div class="summary" role="note">
+    <h2>باختصار</h2>
+    <ul>
+      <li>لا نطلب منك حسابًا ولا بريدًا ولا رقم هاتف.</li>
+      <li>لا نجمع بياناتك الشخصية ولا نبيعها ولا نشاركها.</li>
+      <li>لا توجد إعلانات ولا أدوات تحليل أو تتبّع داخل التطبيق.</li>
+      <li>مفضلتك وإعداداتك تبقى على جهازك فقط.</li>
+    </ul>
+    <p class="en"><strong>In short:</strong> Harjah (<bdi>com.harjah.app</bdi>) does not require an account and does not collect, sell or share personal data. It contains no ads and no analytics or tracking. Your favorites and settings are stored only on your device. The app connects to the internet only to download the word list and pronunciation audio.</p>
+  </div>
+
+  <article>
+    <section>
+      <h2 class="t">1. مقدمة</h2>
+      <p>هذه السياسة تشرح كيف يتعامل تطبيق «هرجة» (معرّف التطبيق <bdi>com.harjah.app</bdi>)، المطوَّر من قِبل حبيب المعولي، مع معلوماتك. باستخدامك للتطبيق فإنك توافق على ما ورد فيها.</p>
+    </section>
+
+    <section>
+      <h2 class="t">2. البيانات التي نجمعها</h2>
+      <p>لا يجمع التطبيق أي بيانات شخصية. لا يوجد تسجيل دخول، ولا ننشئ حسابًا لك، ولا نطلب اسمك أو بريدك أو موقعك أو جهات اتصالك أو صورك أو ميكروفونك.</p>
+    </section>
+
+    <section>
+      <h2 class="t">3. ما يُحفظ على جهازك</h2>
+      <p>يحفظ التطبيق على جهازك فقط ما يلزم ليعمل جيدًا:</p>
+      <ul>
+        <li>قائمة الكلمات المفضلة التي اخترتها.</li>
+        <li>إعداداتك: المظهر (تلقائي أو فاتح أو داكن) وحجم الخط.</li>
+        <li>نسخة من قائمة الكلمات لتعمل دون اتصال.</li>
+        <li>ملفات نطق الكلمات التي استمعت إليها، لتعمل دون اتصال لاحقًا.</li>
+      </ul>
+      <p>هذه البيانات لا تُرسل إلينا، وتُحذف عند إزالة التطبيق أو مسح بياناته من إعدادات أندرويد.</p>
+    </section>
+
+    <section>
+      <h2 class="t">4. استخدام الإنترنت</h2>
+      <p>يتصل التطبيق بالإنترنت لتحديث قائمة الكلمات والأمثال (إضافة الجديد وإزالة ما لم يعد متاحًا) ولتنزيل ملفات النطق. وكأي اتصال بالإنترنت، قد يصل إلى خادم المحتوى معلومات تقنية اعتيادية مثل عنوان الشبكة (IP) ونوع الطلب. لا نستخدمها للتعرّف عليك أو تتبّعك أو بناء ملف عنك.</p>
+    </section>
+
+    <section>
+      <h2 class="t">5. الأذونات</h2>
+      <p>يطلب التطبيق إذن الوصول إلى الإنترنت فقط. لا يطلب أي أذونات حساسة مثل الموقع أو الكاميرا أو الميكروفون أو جهات الاتصال أو التخزين.</p>
+    </section>
+
+    <section>
+      <h2 class="t">6. المشاركة</h2>
+      <p>عند ضغطك على زر المشاركة، يفتح التطبيق قائمة المشاركة في أندرويد لتختار أنت التطبيق الذي تريد إرسال نص الكلمة أو المثل إليه. لا نرى ما تشاركه ولا الجهة التي تشاركه معها.</p>
+    </section>
+
+    <section>
+      <h2 class="t">7. الإعلانات والأطراف الثالثة</h2>
+      <p>لا يعرض التطبيق إعلانات، ولا يتضمن أدوات تحليل أو تتبّع أو مشاركة بيانات مع أطراف ثالثة لأغراض تسويقية.</p>
+    </section>
+
+    <section>
+      <h2 class="t">8. الأطفال</h2>
+      <p>المحتوى عبارة عن كلمات وأمثال عمانية، والتطبيق لا يجمع بيانات من أي مستخدم بمن فيهم الأطفال، ولا يتضمن تواصلًا بين المستخدمين.</p>
+    </section>
+
+    <section>
+      <h2 class="t">9. الأمان</h2>
+      <p>بما أننا لا نجمع بياناتك الشخصية، فلا توجد بيانات من هذا النوع نخزنها لدينا. وتتم تنزيلات المحتوى عبر اتصال مشفّر قدر الإمكان.</p>
+    </section>
+
+    <section>
+      <h2 class="t">10. حقوقك</h2>
+      <p>بإمكانك في أي وقت إزالة المفضلة بإلغاء حفظ كل عنصر، أو حذف كل بيانات التطبيق من جهازك عبر «مسح البيانات» في إعدادات أندرويد أو بإلغاء تثبيت التطبيق.</p>
+    </section>
+
+    <section>
+      <h2 class="t">11. تعديل هذه السياسة</h2>
+      <p>قد نحدّث هذه السياسة عند إضافة ميزة جديدة تتطلب ذلك، وسيظهر تاريخ آخر تحديث أعلى هذه الصفحة. يُعدّ استمرارك في استخدام التطبيق بعد التحديث موافقة على النسخة الجديدة.</p>
+    </section>
+
+    <section>
+      <h2 class="t">12. التواصل</h2>
+      <p>لأي سؤال عن الخصوصية، راسل المطوّر حبيب المعولي على <a href="mailto:habib.almawali@gmail.com">habib.almawali@gmail.com</a> أو عبر موقعه <a href="https://habib.al-mawali.com" rel="noopener">habib.al-mawali.com</a>.</p>
+    </section>
+  </article>
+
+  <div class="meta">اسم التطبيق: هرجة · معرّف الحزمة: <bdi>com.harjah.app</bdi> · الإصدار: <bdi>1.2</bdi> · المطوّر: حبيب المعولي</div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>تطوير <a href="https://habib.al-mawali.com" rel="noopener">حبيب المعولي</a> · © 2026 هرجة</span>
+    <a href="index.html">الصفحة الرئيسية</a>
+  </div>
+</footer>
+</body>
+</html>

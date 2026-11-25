@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>هرجة — قاموس الكلمات والأمثال العمانية</title>
+<meta name="description" content="هرجة تطبيق أندرويد مجاني يجمع الكلمات والأمثال العمانية الأصيلة: ابحث، استمع للنطق، احفظ مفضلتك وشاركها، حتى دون اتصال.">
+<meta name="theme-color" content="#0E5E55">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_OM">
+<meta property="og:title" content="هرجة — كلمات عمانية أصيلة">
+<meta property="og:description" content="قاموس الكلمات والأمثال العمانية في جيبك. حمّله مجانًا من Google Play.">
+<meta property="og:image" content="assets/icon.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-900:#07403A; --teal:#0E5E55; --teal-600:#14786C; --mint:#C6EFE6;
+  --cream:#FDF6EE; --sand:#F2E3D5; --amber:#C58A1B; --rust:#A8402A; --green:#0B7A3E;
+  --ink:#231815; --brown:#5A4339; --card:#FFFFFF; --line:#E8D9CB;
+  --display:"Cairo","Tajawal",Tahoma,sans-serif;
+  --body:"Tajawal","Cairo",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--cream:#14100E; --sand:#241B17; --card:#1D1613; --line:#33281F; --ink:#F6EBDD; --brown:#C9B3A2; --mint:#12413B}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);line-height:1.8;font-size:18px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+
+/* ---------- top bar ---------- */
+.nav{position:absolute;inset:0 0 auto 0;z-index:5;padding:max(18px,env(safe-area-inset-top)) 0 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-family:var(--display);font-size:26px;font-weight:700}
+.brand img{width:44px;height:44px;border-radius:12px;box-shadow:0 4px 14px #0005}
+.nav ul{display:flex;gap:6px;list-style:none}
+.nav ul a{display:block;padding:8px 14px;border-radius:99px;text-decoration:none;color:#ffffffcc;font-size:15px;font-weight:500}
+.nav ul a:hover{background:#ffffff1f;color:#fff}
+@media(max-width:640px){.nav ul li:not(:last-child){display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--teal);color:#fff;padding:120px 0 150px;isolation:isolate;overflow:hidden}
+.hero::before{ /* embroidery of the Omani kuma cap */
+  content:"";position:absolute;inset:0;z-index:-2;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23F2E3D5' stroke-width='2'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3Cpath d='M0 0l8 8M56 0l-8 8M0 56l8-8M56 56l-8-8'/%3E%3Ccircle cx='28' cy='28' r='2.5' fill='%23F2E3D5'/%3E%3C/svg%3E");
+  mask-image:linear-gradient(to left,#000 0,#0000 85%);-webkit-mask-image:linear-gradient(to left,#000 0,#0000 85%);
+}
+.hero::after{content:"";position:absolute;z-index:-1;width:900px;height:900px;left:-260px;top:-120px;border-radius:50%;background:radial-gradient(closest-side,#14786C 0,#14786C00 72%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+
+.quote{display:inline-flex;gap:7px;transform:rotate(-8deg);margin-bottom:6px}
+.quote i{display:block;width:11px;height:34px;border-radius:8px;background:var(--amber)}
+.quote i:last-child{transform:translateY(8px) rotate(14deg)}
+.quote i:first-child{transform:rotate(-14deg)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(72px,13vw,148px);line-height:1;color:var(--cream);text-shadow:0 8px 0 #07403A}
+.hero .lead{font-size:clamp(20px,2.6vw,27px);font-weight:500;margin-top:18px;max-width:30ch;line-height:1.6}
+.hero .sub{margin-top:12px;color:#ffffffbf;max-width:46ch;font-weight:400}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+.play{display:inline-flex;align-items:center;gap:14px;background:var(--cream);color:var(--teal-900);text-decoration:none;padding:12px 24px 12px 28px;border-radius:18px;box-shadow:0 10px 0 #07403A,0 18px 30px #0006;transition:transform .15s,box-shadow .15s}
+.play:hover{transform:translateY(3px);box-shadow:0 7px 0 #07403A,0 14px 24px #0006}
+.play:active{transform:translateY(9px);box-shadow:0 1px 0 #07403A}
+.play svg{width:34px;height:34px;flex:none}
+.play small{display:block;font-size:13px;font-weight:400;line-height:1.2;opacity:.8}
+.play strong{display:block;font-family:var(--display);font-size:24px;line-height:1.2}
+.chip{display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border:1.5px solid #ffffff55;border-radius:99px;font-size:14px;font-weight:500;color:#ffffffe6}
+
+/* phones */
+.stage{position:relative;height:560px;display:grid;place-items:center}
+.phone{position:absolute;width:236px;aspect-ratio:620/1355;border-radius:34px;padding:7px;background:#16100d;box-shadow:0 30px 60px #0008,inset 0 0 0 2px #3a2d27}
+.phone img{width:100%;height:100%;border-radius:27px;object-fit:cover}
+.phone.a{transform:translateX(-95px) rotate(-7deg);z-index:2;animation:rise .9s .1s cubic-bezier(.2,.8,.2,1) both}
+.phone.b{transform:translateX(95px) translateY(34px) rotate(6deg);z-index:1;animation:rise .9s .25s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;translate:0 60px}to{opacity:1;translate:0 0}}
+.float-word{position:absolute;z-index:3;background:var(--cream);color:var(--ink);padding:8px 18px;border-radius:22px 22px 22px 4px;font-family:var(--display);font-size:20px;font-weight:600;box-shadow:0 10px 24px #0005}
+.float-word.w1{top:46px;right:6px;transform:rotate(4deg)}
+.float-word.w2{bottom:64px;left:0;border-radius:22px 22px 4px 22px;background:var(--amber);color:#fff}
+
+/* Oman-flag wave */
+.wave{position:absolute;bottom:-1px;left:0;width:100%;height:120px;z-index:1;display:block}
+
+/* ---------- marquee ---------- */
+.ticker{background:var(--cream);padding:34px 0 26px;overflow:hidden;border-bottom:1px solid var(--line)}
+.ticker .track{display:flex;gap:18px;width:max-content;animation:slide 48s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(50%)}}
+.proverb{flex:none;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:16px 26px;min-width:290px}
+.proverb b{display:block;font-family:var(--display);font-size:22px;font-weight:600;line-height:1.5}
+.proverb span{color:var(--brown);font-size:15px;font-weight:400}
+
+/* ---------- sections ---------- */
+section{padding:92px 0}
+.h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,5vw,54px);line-height:1.25;max-width:16ch}
+.h2-sub{color:var(--brown);margin-top:12px;max-width:52ch;font-weight:400}
+
+/* bento features */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.tile{background:var(--card);border:1.5px solid var(--line);border-radius:30px;padding:28px;position:relative;overflow:hidden;min-height:210px}
+.tile h3{font-family:var(--display);font-size:25px;font-weight:600;line-height:1.35;margin-top:14px}
+.tile p{color:var(--brown);margin-top:8px;font-size:16px;font-weight:400;max-width:34ch}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--mint);color:var(--teal)}
+.ico svg{width:28px;height:28px}
+.t1{grid-column:span 4;background:var(--teal);color:#fff;border-color:var(--teal)}
+.t1 p{color:#ffffffc9}.t1 .ico{background:#ffffff22;color:#fff}
+.t1 .fake-search{position:absolute;left:28px;bottom:26px;width:min(300px,45%);background:var(--cream);color:var(--brown);border-radius:99px;padding:12px 20px;font-size:15px;box-shadow:0 8px 0 #07403A}
+.t2{grid-column:span 2}
+.t3{grid-column:span 2}
+.t4{grid-column:span 2;background:var(--sand);border-color:var(--sand)}
+.t4 .ico{background:var(--card);color:var(--rust)}
+.t5{grid-column:span 2}
+.wavebars{display:flex;gap:5px;align-items:center;height:36px;margin-top:18px}
+.wavebars i{display:block;width:6px;border-radius:6px;background:var(--amber);animation:eq 1.2s ease-in-out infinite}
+.wavebars i:nth-child(1){height:40%}.wavebars i:nth-child(2){height:90%;animation-delay:.15s}.wavebars i:nth-child(3){height:60%;animation-delay:.3s}.wavebars i:nth-child(4){height:100%;animation-delay:.45s}.wavebars i:nth-child(5){height:50%;animation-delay:.6s}.wavebars i:nth-child(6){height:75%;animation-delay:.75s}
+@keyframes eq{50%{transform:scaleY(.4)}}
+.themes{display:flex;gap:10px;margin-top:18px}
+.themes span{width:52px;height:52px;border-radius:16px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:22px}
+.themes .l{background:#FDF6EE;color:#231815}.themes .d{background:#14100E;color:#F6EBDD}.themes .s{background:var(--mint);color:var(--teal);border-color:var(--teal)}
+
+/* screens */
+.screens{background:var(--sand);position:relative}
+.screens .row{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px;align-items:start}
+.shot{text-align:center}
+.shot .phone{position:relative;width:min(260px,100%);margin-inline:auto;transform:none;animation:none;box-shadow:0 24px 40px #2a1a1244,inset 0 0 0 2px #3a2d27}
+.shot:nth-child(2){margin-top:44px}
+.shot figcaption{margin-top:22px;font-family:var(--display);font-size:21px;font-weight:600}
+.shot small{display:block;color:var(--brown);font-family:var(--body);font-size:15px;font-weight:400}
+
+/* details + changelog */
+.two{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.specs{background:var(--teal);color:#fff;border-radius:32px;padding:34px;position:sticky;top:24px}
+.specs h3{font-family:var(--display);font-size:28px;margin-bottom:14px}
+.specs dl div{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed #ffffff40}
+.specs dl div:last-child{border:0}
+.specs dt{color:#ffffffb0;font-weight:400}
+.specs dd{font-weight:500;text-align:left}
+.specs bdi{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px}
+
+.log{margin-top:40px;position:relative;padding-inline-start:34px}
+.log::before{content:"";position:absolute;inset-block:8px 8px;inset-inline-start:7px;width:3px;border-radius:3px;background:linear-gradient(var(--amber),var(--line))}
+.rel{position:relative;padding-bottom:36px}
+.rel::before{content:"";position:absolute;inset-inline-start:-34px;top:9px;width:17px;height:17px;border-radius:50%;background:var(--cream);border:4px solid var(--amber)}
+.rel:first-child::before{background:var(--amber);box-shadow:0 0 0 6px #C58A1B33}
+.rel header{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ver{font-family:var(--display);font-size:30px;font-weight:700}
+.badge{font-size:13px;font-weight:500;background:var(--mint);color:var(--teal);padding:2px 12px;border-radius:99px}
+.date{color:var(--brown);font-size:15px;font-weight:400}
+.rel ul{margin-top:10px;list-style:none;display:grid;gap:8px}
+.rel li{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:10px 18px;font-size:16px}
+@media(prefers-color-scheme:dark){.badge{color:var(--mint);background:#14786C55}}
+
+/* download band */
+.get{background:var(--teal-900);color:#fff;text-align:center;position:relative;overflow:hidden;isolation:isolate}
+.get::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23F2E3D5' stroke-width='2'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3Ccircle cx='28' cy='28' r='2.5' fill='%23F2E3D5'/%3E%3C/svg%3E")}
+.get img{width:112px;height:112px;border-radius:28px;margin:0 auto 22px;box-shadow:0 14px 34px #0007}
+.get h2{font-family:var(--display);font-size:clamp(34px,5vw,56px);line-height:1.25}
+.get p{color:#ffffffbf;margin:10px auto 0;max-width:42ch;font-weight:400}
+.get .cta-row{justify-content:center}
+
+footer{background:var(--teal-900);color:#ffffffb8;padding:0 0 max(34px,env(safe-area-inset-bottom));font-size:15px}
+footer .wrap{border-top:1px solid #ffffff22;padding-top:26px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer a{color:#fff;text-underline-offset:4px}
+footer .links{display:flex;gap:22px;flex-wrap:wrap}
+
+/* responsive */
+@media(max-width:900px){
+  .hero{padding:104px 0 130px}
+  .hero .wrap{grid-template-columns:1fr;text-align:center}
+  .hero .lead,.hero .sub{margin-inline:auto}
+  .cta-row{justify-content:center}
+  .stage{height:480px}
+  .phone{width:200px}
+  .phone.a{transform:translateX(-78px) rotate(-7deg)}.phone.b{transform:translateX(78px) translateY(30px) rotate(6deg)}
+  .bento{grid-template-columns:1fr 1fr}
+  .t1{grid-column:span 2}.t2,.t3,.t4,.t5{grid-column:span 1}
+  .two{grid-template-columns:1fr}
+  .specs{position:static}
+  .screens .row{grid-template-columns:1fr;gap:46px}.shot:nth-child(2){margin-top:0}
+}
+@media(max-width:520px){
+  section{padding:68px 0}
+  .bento{grid-template-columns:1fr}.t1,.t2,.t3,.t4,.t5{grid-column:span 1}
+  .t1 .fake-search{position:static;width:100%;margin-top:22px}
+  .float-word{font-size:17px}
+  .play strong{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="هرجة"><img src="assets/icon.png" alt="" width="44" height="44">هرجة</a>
+    <nav aria-label="التنقل">
+      <ul>
+        <li><a href="#features">المزايا</a></li>
+        <li><a href="#changelog">سجل التحديثات</a></li>
+        <li><a href="privacy.html">الخصوصية</a></li>
+        <li><a href="#download">تحميل</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1" style="padding-bottom:150px">
+  <div class="wrap">
+    <div>
+      <span class="quote" aria-hidden="true"><i></i><i></i></span>
+      <h1 id="h1">هرجة</h1>
+      <p class="lead">كلمات عمانية أصيلة، وأمثال بنكهة أهلنا، في جيبك.</p>
+      <p class="sub">ابحث عن الكلمة أو معناها، اسمع نطقها، واحفظ المفضّل منها وشاركه مع من تحب. يعمل حتى بدون إنترنت.</p>
+      <div class="cta-row">
+        <a class="play" href="https://play.google.com/store/apps/details?id=com.harjah.app" rel="noopener">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#0E5E55" d="M8 4.6v38.8c0 1.2 1.3 1.9 2.3 1.3L43 25.2c1-.6 1-2 0-2.6L10.300 3.300C9.300 2.700 8 3.400 8 4.600Z"/><path fill="#C58A1B" d="m29.500 16.800-6.700 7.200 6.700 7.200 5.100-3c1-.6 1-2 0-2.600l-1.800-1.200 1.800-1.100c1-.6 1-2 0-2.600l-5.100-3.900Z" opacity=".95"/></svg>
+          <span><small>متوفر على</small><strong>Google Play</strong></span>
+        </a>
+        <span class="chip">مجاني · الإصدار 1.2</span>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <span class="float-word w1">مد رجولك على قد لحافك</span>
+      <span class="float-word w2">قديم البريسم</span>
+      <div class="phone a"><img src="assets/s2.jpg" alt="" width="620" height="1355"></div>
+      <div class="phone b"><img src="assets/s1.jpg" alt="" width="620" height="1355"></div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <defs><path id="w" d="M0 40C240 90 420 -16 720 18S1200 82 1440 16V160H0Z"/></defs>
+    <use href="#w" fill="#fff"/>
+    <use href="#w" fill="#D8281F" transform="translate(0 13)"/>
+    <use href="#w" fill="#0B7A3E" transform="translate(0 26)"/>
+    <use href="#w" fill="var(--cream)" transform="translate(0 40)"/>
+  </svg>
+</section>
+
+<div class="ticker" aria-label="أمثلة من الأمثال في التطبيق">
+  <div class="track">
+    <div class="proverb"><b>مد رجولك على قد لحافك</b><span>أن يعيش الإنسان على قدره ولا يكلف نفسه فوق طاقتها</span></div>
+    <div class="proverb"><b>هذي الوريقه من ذيك الشجيره</b><span>كل شيء له أصل</span></div>
+    <div class="proverb"><b>قديم البريسم ولا جديد الصوف</b><span>لا تتبع المظاهر أو الموضة بل اتبع الأصل</span></div>
+    <div class="proverb"><b>مد رجولك على قد لحافك</b><span>أن يعيش الإنسان على قدره ولا يكلف نفسه فوق طاقتها</span></div>
+    <div class="proverb"><b>هذي الوريقه من ذيك الشجيره</b><span>كل شيء له أصل</span></div>
+    <div class="proverb"><b>قديم البريسم ولا جديد الصوف</b><span>لا تتبع المظاهر أو الموضة بل اتبع الأصل</span></div>
+  </div>
+</div>
+
+<section id="features" aria-labelledby="f-h">
+  <div class="wrap">
+    <h2 class="h2" id="f-h">كل ما تحتاجه لتفهم الهرجة</h2>
+    <p class="h2-sub">تطبيق خفيف وبسيط، مصمم لقراءة مريحة وبحث سريع.</p>
+    <div class="bento">
+      <article class="tile t1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg></div>
+        <h3>ابحث بالكلمة أو بمعناها</h3>
+        <p>اكتب أي جزء من الكلمة أو المعنى، وصفّي القائمة بالوسوم: كلمة أو أمثال. اضغط على وسم الكلمة لتصفية القائمة به.</p>
+        <div class="fake-search" aria-hidden="true">ابحث عن كلمة أو معنى…</div>
+      </article>
+      <article class="tile t2">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></div>
+        <h3>اسمع النطق</h3>
+        <p>استمع لنطق الكلمة. يعمل دون اتصال بعد حفظ النطق.</p>
+        <div class="wavebars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </article>
+      <article class="tile t3">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.500 3 5 6.400 5c2 0 3.600 1.100 4.600 2.700h2C14 6.100 15.600 5 17.600 5 21 5 22.800 8.500 21.500 11.700 19.500 16.400 12 21 12 21Z"/></svg></div>
+        <h3>مفضلتك أولًا</h3>
+        <p>احفظ ما يعجبك وشاركه بضغطة. وتبقى مفضلتك كما هي عند كل تحديث.</p>
+      </article>
+      <article class="tile t4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.500-6.200L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.500 6.200L3 16"/><path d="M3 21v-5h5"/></svg></div>
+        <h3>كلمات جديدة تصلك تلقائيًا</h3>
+        <p>تُضاف الكلمات الجديدة وتُزال التي لم تعد متاحة، وتعمل القائمة دون اتصال بعد أول تحديث.</p>
+      </article>
+      <article class="tile t5">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/></svg></div>
+        <h3>على ذوقك</h3>
+        <p>وضع فاتح أو داكن أو تلقائي، وأربعة أحجام للخط.</p>
+        <div class="themes" aria-hidden="true"><span class="s">أ</span><span class="l">أ</span><span class="d">أ</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="screens" aria-labelledby="s-h">
+  <div class="wrap">
+    <h2 class="h2" id="s-h">لقطات من التطبيق</h2>
+    <div class="row">
+      <figure class="shot"><div class="phone"><img src="assets/s1.jpg" alt="الشاشة الرئيسية في تطبيق هرجة تعرض قائمة الأمثال العمانية مع البحث والوسوم" width="620" height="1355" loading="lazy"></div><figcaption>تصفّح الكلمات والأمثال<small>بطاقات واضحة وتحميل تدريجي</small></figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="assets/s2.jpg" alt="شاشة المفضلة في تطبيق هرجة" width="620" height="1355" loading="lazy"></div><figcaption>مفضلتك في مكان واحد<small>احفظها وشاركها متى شئت</small></figcaption></figure>
+      <figure class="shot"><div class="phone"><img src="assets/s3.jpg" alt="شاشة الإعدادات في تطبيق هرجة: المظهر وحجم الخط" width="620" height="1355" loading="lazy"></div><figcaption>خصّص هرجة على ذوقك<small>المظهر وحجم الخط</small></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="changelog" aria-labelledby="c-h">
+  <div class="wrap two">
+    <aside class="specs" aria-labelledby="sp-h">
+      <h3 id="sp-h">عن التطبيق</h3>
+      <dl>
+        <div><dt>الاسم</dt><dd>هرجة</dd></div>
+        <div><dt>اللغة</dt><dd>العربية</dd></div>
+        <div><dt>الإصدار</dt><dd><bdi>1.2</bdi> (<bdi>3</bdi>)</dd></div>
+        <div><dt>يتطلب</dt><dd>أندرويد 8.0 فأعلى</dd></div>
+        <div><dt>معرّف التطبيق</dt><dd><bdi>com.harjah.app</bdi></dd></div>
+        <div><dt>السعر</dt><dd>مجاني</dd></div>
+        <div><dt>تطوير</dt><dd>حبيب المعولي</dd></div>
+      </dl>
+    </aside>
+    <div>
+      <h2 class="h2" id="c-h">سجل التحديثات</h2>
+      <p class="h2-sub">ما الجديد في كل إصدار من هرجة.</p>
+      <div class="log">
+        <article class="rel">
+          <header><span class="ver">1.2</span><span class="badge">الأحدث</span><span class="date">نوفمبر 2026</span></header>
+          <ul>
+            <li>تصميم جديد أكثر حيوية وسهولة في الاستخدام</li>
+            <li>أيقونة تطبيق أوضح تناسب جميع الأشكال</li>
+            <li>تحسين عرض الكلمات والوسوم والأزرار</li>
+          </ul>
+        </article>
+        <article class="rel">
+          <header><span class="ver">1.1</span><span class="date">نوفمبر 2026</span></header>
+          <ul>
+            <li>وصول الكلمات الجديدة تلقائيًا، وإزالة الكلمات التي لم تعد متاحة</li>
+            <li>الاستماع إلى نطق الكلمات، ويعمل دون اتصال بعد حفظ النطق</li>
+            <li>الضغط على وسم الكلمة لتصفية القائمة به</li>
+            <li>تحسين تحديث القائمة مع الحفاظ على المفضلة</li>
+          </ul>
+        </article>
+        <article class="rel">
+          <header><span class="ver">1.0</span><span class="date">نوفمبر 2026</span></header>
+          <ul>
+            <li>عرض الكلمات مع تحميل تدريجي</li>
+            <li>البحث والتصفية بالوسوم</li>
+            <li>حفظ الكلمات المفضلة ومشاركتها</li>
+            <li>العمل بدون اتصال بعد أول تحديث</li>
+            <li>الوضع الفاتح والداكن وتغيير حجم الخط</li>
+            <li>زر الرجوع مرتين للخروج من التطبيق</li>
+            <li>أيقونة تطبيق جديدة</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="get" id="download" aria-labelledby="d-h">
+  <div class="wrap">
+    <img src="assets/icon.png" alt="أيقونة تطبيق هرجة" width="112" height="112" loading="lazy">
+    <h2 id="d-h">خذ الهرجة معك</h2>
+    <p>حمّل هرجة مجانًا من Google Play، وابدأ باكتشاف الكلمات والأمثال العمانية.</p>
+    <div class="cta-row">
+      <a class="play" href="https://play.google.com/store/apps/details?id=com.harjah.app" rel="noopener">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#0E5E55" d="M8 4.6v38.8c0 1.2 1.3 1.9 2.3 1.3L43 25.2c1-.6 1-2 0-2.6L10.300 3.300C9.300 2.700 8 3.400 8 4.600Z"/><path fill="#C58A1B" d="m29.500 16.800-6.700 7.200 6.700 7.200 5.100-3c1-.6 1-2 0-2.600l-1.800-1.200 1.800-1.100c1-.6 1-2 0-2.600l-5.100-3.900Z"/></svg>
+        <span><small>متوفر على</small><strong>Google Play</strong></span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>تطوير <a href="https://habib.al-mawali.com" rel="noopener">حبيب المعولي</a> · © 2026 هرجة</span>
+    <nav class="links" aria-label="روابط">
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="#changelog">سجل التحديثات</a>
+      <a href="mailto:habib.almawali@gmail.com">تواصل معنا</a>
+      <a href="https://habib.al-mawali.com" rel="noopener">المطوّر</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
